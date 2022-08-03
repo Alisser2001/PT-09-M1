@@ -23,7 +23,7 @@ function DecimalABinario(num) {
     coc = Math.trunc(coc / 2);
     myArr.push(residuo);
   }
-  myArr.push(coc % 2);
+  myArr.push(coc);
   let bin = myArr.reverse().join("");
   return bin;
 }
