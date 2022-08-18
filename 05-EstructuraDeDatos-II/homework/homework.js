@@ -109,38 +109,43 @@ tabla con el nombre 'instructora'; luego, invocando set('instructora', 'Ani'), s
 */
 
 function HashTable() {
-  this.hashArr = []
-  this.numBuckets = 35
+  this.hashArr = [] //Array de objetos
+  this.numBuckets = 35 //Números de posiciones
 }
 
 HashTable.prototype.hash = function(input) {
   let sum=0;
   for(let i=0; i<input.length; i++) {
-    let myVar = input.charCodeAt(i)
+    let myVar = input.charCodeAt(i) //Sumamos en la variable sum los valores unicode de cada letra individualmente
     sum += myVar
   }
-  return (sum % this.numBuckets);
+  return (sum % this.numBuckets); //Retornamos el modulo entre dicha suma y el número de buckets
 };
 HashTable.prototype.set = function(key, value) {
-  if(typeof key != 'string') {
+  if(typeof key != 'string') { /*Si la clave pasada no es un String, usamos throw (lanzar) para mostar un error con el mensaje 
+  'Keys must be strings'*/
     throw new TypeError('Keys must be strings');
   }
-  let posi = this.hash(key)
-  if(this.hashArr[posi] === undefined) {
-    this.hashArr[posi] = {}
+  let posi = this.hash(key) /*Si es un string, establecemos en una variable la posición en la que irá de nuestro objeto por medio
+  de la función hash*/
+  if(this.hashArr[posi] === undefined) { //Si la posición está vacía, creamos un nuevo objeto en ella    
+  this.hashArr[posi] = {}
   }
-  this.hashArr[posi][key] = value;
+  this.hashArr[posi][key] = value; /*Si no lo está, agregamos directamente la propiedad (con notación implicita de corchetes)
+  y su valor correspondiente al objeto. Notese que si tuvieramos dos claves, donde una es el string invertido de la otra, 
+  esto nos daría la el mismo valor de posición, por lo que añadirlo así nos permitirá colocar varias propiedades en el mismo objeto 
+  cada una con su respectivo valor key, evitando así las colisiones*/ 
 };
 HashTable.prototype.get = function(key) {
-  let posi = this.hash(key)
-  return this.hashArr[posi][key]
+  let posi = this.hash(key) //Establecemos de nuevo un valor de posición para buscar la clave solicitada en la hashTable
+  return this.hashArr[posi][key] //Retornamos dicha clave por medio de su posición (si existe)
 };
 HashTable.prototype.hasKey = function(key) {
-  let posi = this.hash(key)
-  if(this.hashArr[posi][key]) {
+  let posi = this.hash(key) //De nuevo, establecemos una posición para buscar
+  if(this.hashArr[posi][key]) { //Si existe una clave identica al valor key pasado para esa posición, se retorna true
     return true;
   }
-  return false;
+  return false; //Si no existe dicha clave en su posición correspondiente, se retorna false
 }
 // No modifiquen nada debajo de esta linea
 // --------------------------------
