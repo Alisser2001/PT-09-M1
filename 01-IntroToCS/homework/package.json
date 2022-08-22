@@ -10,5 +10,8 @@
     "jest": "^27.5.1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.19"
+  }
 }

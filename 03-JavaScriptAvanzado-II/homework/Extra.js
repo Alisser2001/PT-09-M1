@@ -15,7 +15,7 @@ String.prototype.repeatify = function (n) {
     }
 }
 let str = 'Hola'
-console.log(str.repeatify(5))
+console.log(str.repeatify(5))  
 
 //Crea un objeto llamado `shape` que tenga una propiedad `type` y un método `getType`.
 //Ahora defini una función `Triangle` cuyo prototipo sea `shape`. 

@@ -24,7 +24,7 @@ function Node(value) {
   this.next = null
 }
 //Retornar todo los valores de la lista:
-LinkedList.prototype.getAll = function(data) { //Imprime todos los nodos de la List
+LinkedList.prototype.getAll = function() { //Imprime todos los nodos de la List
   let current = this.head //Apunta al primer elemento de List
   if (!current) { //Si no hay elementos en la lista
     console.log("La lista está vacía")
