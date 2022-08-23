@@ -22,7 +22,7 @@ BinarySearchTree.prototype.size = function() {
   if(this.left) { //Si exite un valor a la izquierda, aumentamos el contador en 1
     cont += 1
     this.left.size() /*Con ayuda de la recursión, la función se ejecutará hacia ambos lados siempre
-    y cuendo existen valores*/
+    y cuando existen valores*/
   } 
   if (this.right) { //Si existe un valor a la derecha, aumentamos el contador en 1
     cont += 1
@@ -62,6 +62,8 @@ BinarySearchTree.prototype.contains = function(value) {
   }
 }
 BinarySearchTree.prototype.depthFirstForEach = function(fcb, order) {
+  /*El código va creando contextos de ejecución para cada nodo, de forma que cuando termina con el contexto de 
+  cada nodo, vuelve por si solo a ejecutar los nodos principales o root*/ 
   if (order === 'pre-order') { 
     fcb(this.value) //Evalua el primer valor
     if(this.left !== null) { //Se ejecuta primero hacia la izquierda, devolviendo cada valor
